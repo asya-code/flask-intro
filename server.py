@@ -18,7 +18,22 @@ AWESOMENESS = [
 def start_here():
     """Home page."""
 
-    return "<!doctype html><html>Hi! This is the home page.</html>"
+    return  """
+    <!doctype html>
+    <html>
+        <head>
+        <title>Hi! This is the home page.</title>
+      </head>
+      <body>
+        <h1>Hi! This is the home page.</h1>
+        
+        <p>
+          You can talk to us now! <a href="http://localhost:5000/hello">Talk</a>
+        </p>
+
+      </body>
+    
+    </html>"""
 
 
 @app.route('/hello')
@@ -35,7 +50,36 @@ def say_hello():
         <h1>Hi There!</h1>
         <form action="/greet">
           What's your name? <input type="text" name="person">
-          <input type="submit" value="Submit">
+      <div>
+        <p>
+          Please choose your desired compliment!
+          <select name="compliment">
+            <option value="awesome">Awesome</option>
+            <option value="terrific">Terrific</option>
+            <option value="fantastic">Fantastic</option>
+            <option value="neato">Neatoe</option>
+            <option value="fantabulous">Fantabulous</option>
+            <option value="wowza">Wowza</option>
+            <option value="oh-so-not-meh">Oh-so-not-meh</option>
+            <option value="brilliant">Brilliant</option>
+            <option value="ducky">Ducky</option>
+            <option value="coolio">Coolio</option>
+            <option value="incredible">Incredible</option>
+            <option value="wonderful">Wonderful</option>
+            <option value="smashing">Smashing</option>
+            <option value="ducky">Ducky</option>
+            <option value="lovely">Lovely</option>
+        </p>
+      </div>
+        <div>
+          <p>
+            <input type="submit" value="Submit">
+          </p>
+        </div>
+      <!--
+        <button type="submit">Submit</button>
+      -->
+
         </form>
       </body>
     </html>
@@ -47,8 +91,9 @@ def greet_person():
     """Get user by name."""
 
     player = request.args.get("person")
+    compliment = request.args.get("compliment")
 
-    compliment = choice(AWESOMENESS)
+    #compliment = choice(AWESOMENESS)
 
     return f"""
     <!doctype html>
